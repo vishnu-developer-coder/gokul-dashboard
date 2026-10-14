@@ -132,3 +132,26 @@ input[type=range]::-moz-range-thumb{width:30px;height:30px;border-radius:50%;bor
 svg{width:100%;height:auto;display:block}
 svg rect{filter:drop-shadow(0 2px 2px rgba(20,60,100,.35))}
 svg text{fill:var(--mute);font-family:inherit}
+
+/* sidebar layout and planner */
+.app{display:flex;min-height:100vh}
+.main{flex:1;min-width:0}
+.side{position:sticky;top:0;align-self:flex-start;height:100vh;width:230px;flex:none;display:flex;flex-direction:column;gap:12px;padding:20px 14px;background:linear-gradient(180deg,var(--card1),var(--card2));border-right:1px solid var(--edge);box-shadow:8px 0 22px -12px var(--shadow)}
+.brand{display:flex;align-items:center;gap:10px;font-size:1.25rem;font-weight:700;padding:4px 6px 10px}
+.orb{flex:none;width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#fff 0,#7FD8F8 35%,#1389CC 80%);box-shadow:0 2px 4px var(--shadow),inset 0 -3px 4px rgba(0,60,110,.4)}
+.side button{width:100%;display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;border-radius:18px;padding:12px 16px}
+.side button small{font-size:.8rem;font-weight:400}
+.sidenote{margin-top:auto;font-size:.85rem;color:var(--mute)}
+.grid[hidden]{display:none}
+.pagehead h2{font-size:1.6rem}.pagehead h2::before{display:none}
+.br{display:grid;grid-template-columns:minmax(120px,1fr) 2fr;gap:4px 12px;align-items:center;margin:12px 0}
+.chips{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.chip{display:flex;flex-direction:column;gap:2px;padding:12px 14px;border-radius:16px;background:linear-gradient(var(--tube1),var(--tube2));box-shadow:inset 0 2px 5px rgba(0,0,0,.22),0 1px 0 rgba(255,255,255,.7)}
+.chip b{font-size:1.35rem;line-height:1.2}
+.tr{display:grid;grid-template-columns:64px 1.2fr 1.4fr;gap:10px;align-items:baseline;padding:10px 0;border-top:1px solid var(--line)}
+.tr:first-child{border-top:0}.tr b{font-family:"Orbitron","Courier New",monospace}
+.ck label{display:flex;gap:12px;align-items:center;font-weight:400;margin:10px 0;cursor:pointer}
+input[type=checkbox]{width:26px;height:26px;flex:none;accent-color:var(--blue)}
+@media(max-width:860px){.app{flex-direction:column}.main{padding-bottom:96px}
+.side{position:fixed;top:auto;left:0;right:0;bottom:0;height:auto;width:auto;flex-direction:row;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));z-index:5;border-right:0;border-top:1px solid var(--edge);box-shadow:0 -8px 20px -10px var(--shadow)}
+.brand,.sidenote{display:none}.side button{flex:1;align-items:center;text-align:center}.tr{grid-template-columns:60px 1fr}.tr .small{grid-column:2}}

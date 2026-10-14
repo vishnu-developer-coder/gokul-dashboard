@@ -10,77 +10,32 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="wrap">
-<header>
+<div class="app"><nav class="side" aria-label="Dashboard sections"><div class="brand"><span class="orb"></span>Gokul</div><button data-p="A" aria-pressed="true">Dashboard Summary<small>Last 28 mornings</small></button><button data-p="B" aria-pressed="false">Planner<small>Planning and Scheduling</small></button><p class="sidenote">Sample data for demo</p></nav><div class="main"><div class="wrap"><header>
  <div>
   <h1 id="greet">Good morning, Gokul</h1>
   <p class="sub" id="today"></p>
  </div>
  <span class="badge">Sample data for demo</span>
-</header>
-
-<div class="grid">
-
-<section class="card s12" aria-labelledby="h-eta">
- <div class="hero">
-  <div>
-   <h2 id="h-eta">When will today's round finish?</h2>
-   <p class="sub">Goal: finish by 8:30 am</p>
-   <div class="big" id="eta">8:52</div>
-   <p style="margin:10px 0 6px"><span class="pill bad" id="etaPill">22 min late</span></p>
-   <p id="etaTip" class="small"></p>
-  </div>
-  <div>
-   <label for="queue">Queue at the dairy: <span id="qv">20</span> min</label>
-   <input type="range" id="queue" min="5" max="40" value="20">
-   <p class="small" style="margin:0">Slide to try a shorter or longer wait. Last 28 mornings: 9 to 33 min.</p>
-   <label>Weather today</label>
-   <div class="seg" id="wxBtns" role="group" aria-label="Weather today">
-    <button data-w="clear" aria-pressed="true">Sunny</button>
-    <button data-w="cloud" aria-pressed="false">Cloudy</button>
-    <button data-w="rain" aria-pressed="false">Rain</button>
-   </div>
-   <p class="small" style="margin:8px 0 0">The estimate comes from the last 28 mornings. Rain adds about 11 minutes.</p>
-  </div>
- </div>
-</section>
-
-<section class="card s5" aria-labelledby="h-wx">
- <h2 id="h-wx">Weather for your round</h2>
- <p class="sub" id="wxPlace">Angamaly, Kerala (sample forecast)</p>
- <div style="display:flex;align-items:center;gap:14px;margin:10px 0">
-  <div class="big" id="wxTemp">31°</div>
-  <div><b id="wxName">Sunny</b><br><span class="small" id="wxRain">Chance of rain: 10%</span></div>
- </div>
- <div class="hours" id="wxHours"></div>
- <p id="wxAdvice" style="margin:12px 0 0;font-weight:700"></p>
-</section>
-
-<section class="card s7" aria-labelledby="h-rt">
+</header><div id="pgA" class="grid"><div class="s12 pagehead"><h2>What happened</h2><p class="sub">The last 28 mornings and 12 months, in plain pictures. Each card ends with today's record.</p></div><section class="s12" aria-label="Key numbers">
+ <div class="kpis" id="kpis"></div>
+</section><section class="card s12" aria-labelledby="h-fin"><h2 id="h-fin">Finish time, last 28 mornings</h2><p class="sub" id="finSub"></p><svg id="finChart" viewBox="0 0 1100 270" role="img" aria-label="Bar chart of finish times for 28 mornings; only 3 are on time"></svg></section><section class="card s6" aria-labelledby="h-tr">
+ <h2 id="h-tr">Customers and complaints, 12 months</h2>
+ <p class="sub">As complaints went up, homes went down.</p>
+ <svg id="trChart" viewBox="0 0 560 250" role="img" aria-label="Line chart: delivery homes fell from 70 to 52 while complaints rose from 12 to 30"></svg>
+</section><section class="card s6" aria-labelledby="h-wl"><h2 id="h-wl">What makes the round late?</h2><p class="sub">How late the average finish was, in minutes</p><div id="bQueue"></div><div id="bQueue2"></div><p class="small" style="margin:14px 0 0"><b>By weather</b></p><div id="bWx"></div></section><section class="card s6" aria-labelledby="h-rl"><h2 id="h-rl">Which homes get milk late?</h2><p class="sub">Share of late homes by route</p><div id="bRoute"></div></section><section class="card s6" aria-labelledby="h-tw"><h2 id="h-tw">Warm milk spoils more</h2><p class="sub">Temperature at the last stop and litres spoiled a morning</p><div id="bTemp"></div></section><section class="card s6" aria-labelledby="h-cr"><h2 id="h-cr">Complaints by reason</h2><p class="sub">30 complaints a month</p><div id="bComp"></div></section><section class="card s6" aria-labelledby="h-bf"><h2 id="h-bf">Bottles that failed the check</h2><p class="sub">14 of 40 bottles failed over 4 weeks</p><div id="bBot"></div></section><section class="card s12 money" aria-labelledby="h-mn">
+ <h2 id="h-mn">Money lost to problems each month</h2>
+ <p class="sub">Fixing the problems brings this money back.</p>
+ <div><span>Milk that went sour (42 L)</span><b>Rs 2,100</b></div>
+ <div><span>Free replacement milk (18 L)</span><b>Rs 900</b></div>
+ <div><span>Profit lost from 18 customers who left</span><b>Rs 4,050</b></div>
+ <div class="t"><span>Total</span><span style="color:var(--red)">Rs 7,050</span></div>
+</section><div class="s12 pagehead"><h2>Today so far</h2><p class="sub">Tap to record what happens today.</p></div><section class="card s6" aria-labelledby="h-rt">
  <h2 id="h-rt">Delivery progress</h2>
  <p class="sub">Tap + after each home is delivered.</p>
  <div id="routes"></div>
  <div class="bar"><i id="allBar" style="background:var(--green);width:0"></i></div>
  <p style="margin:0"><b id="allTxt">0 of 52 homes delivered</b> <span class="pill info" id="allPct">0%</span></p>
-</section>
-
-<section class="s12" aria-label="Key numbers">
- <div class="kpis" id="kpis"></div>
-</section>
-
-<section class="card s6" aria-labelledby="h-fin">
- <h2 id="h-fin">Finish time, last 14 mornings</h2>
- <p class="sub">Green is on time. Amber is up to 15 min late. Red is later.</p>
- <svg id="finChart" viewBox="0 0 560 250" role="img" aria-label="Bar chart of finish times for the last 14 mornings, most are after 8:30"></svg>
-</section>
-
-<section class="card s6" aria-labelledby="h-tr">
- <h2 id="h-tr">Customers and complaints, 12 months</h2>
- <p class="sub">As complaints went up, homes went down.</p>
- <svg id="trChart" viewBox="0 0 560 250" role="img" aria-label="Line chart: delivery homes fell from 70 to 52 while complaints rose from 12 to 30"></svg>
-</section>
-
-<section class="card s4" aria-labelledby="h-bt">
+</section><section class="card s6" aria-labelledby="h-bt">
  <h2 id="h-bt">Bottle check today</h2>
  <p class="sub">Check 10 bottles. Tap Clean or Dirty for each.</p>
  <div class="seg">
@@ -89,36 +44,18 @@
  <p style="margin:12px 0 4px"><b id="bTxt">0 of 10 checked</b></p>
  <div class="bar"><i id="bBar" style="width:0;background:var(--green)"></i></div>
  <p id="bRes" class="small" style="margin:0">Goal: 98% clean. Now: 65%.</p>
-</section>
-
-<section class="card s4" aria-labelledby="h-sp">
+</section><section class="card s6" aria-labelledby="h-sp">
  <h2 id="h-sp">Spoiled milk today</h2>
  <p class="sub">Write down every litre that goes sour.</p>
  <div class="step"><button id="spM" aria-label="One litre less">−</button><output id="spV" style="font-size:2rem">0 L</output><button id="spP" aria-label="One litre more">+</button></div>
  <p style="margin:12px 0 0" id="spLoss">Loss today: Rs 0</p>
  <p class="small" style="margin:4px 0 0">Milk costs Rs 50 a litre. Goal: under 0.3% of milk sold.</p>
-</section>
-
-<section class="card s4" aria-labelledby="h-cp">
+</section><section class="card s6" aria-labelledby="h-cp">
  <h2 id="h-cp">Complaints today</h2>
  <p class="sub">Tap the reason each time a customer complains.</p>
  <div class="tally" id="cpBtns"></div>
  <p style="margin:12px 0 0" id="cpTxt" class="small">No complaints yet today.</p>
-</section>
-
-<section class="card s12 money" aria-labelledby="h-mn">
- <h2 id="h-mn">Money lost to problems each month</h2>
- <p class="sub">Fixing the problems brings this money back.</p>
- <div><span>Milk that went sour (42 L)</span><b>Rs 2,100</b></div>
- <div><span>Free replacement milk (18 L)</span><b>Rs 900</b></div>
- <div><span>Profit lost from 18 customers who left</span><b>Rs 4,050</b></div>
- <div class="t"><span>Total</span><span style="color:var(--red)">Rs 7,050</span></div>
-</section>
-
-</div>
-<p class="small" style="margin:16px 0 0">All numbers are sample figures built from the case study. They will be replaced with Gokul's own records.</p>
-</div>
-
+</section></div><div id="pgB" class="grid" hidden><div class="s12 pagehead"><h2>Plan tomorrow</h2><p class="sub">Set tomorrow's weather, dairy wait and homes. The planner shows when to leave and what to prepare.</p></div><section class="card s5" aria-labelledby="h-set"><h2 id="h-set">Tomorrow's setup</h2><label>Weather forecast</label><div class="seg" id="pW" role="group" aria-label="Weather tomorrow"><button data-w="clear" aria-pressed="false">Sunny</button><button data-w="cloud" aria-pressed="false">Cloudy</button><button data-w="rain" aria-pressed="false">Rain</button></div><p class="small" id="pWn" style="margin:8px 0 0"></p><label for="pq">Expected wait at the dairy: <span id="pqv">20</span> min</label><input type="range" id="pq" min="5" max="40" value="20"><label>Homes to deliver</label><div class="step"><button id="hM" aria-label="Fewer homes">−</button><output id="hV">52</output><button id="hP" aria-label="More homes">+</button></div><label>You plan to leave home at</label><div class="step"><button id="lM" aria-label="5 minutes earlier">−</button><output id="lV">5:30</output><button id="lP" aria-label="5 minutes later">+</button></div><p class="small" style="margin:8px 0">Buttons move 5 minutes at a time.</p><button id="pBest">Use the latest safe time</button></section><section class="card s7" aria-labelledby="h-ans"><h2 id="h-ans">Tomorrow's answer</h2><p class="sub">Last home delivered at</p><div class="big" id="pEta">8:52</div><p style="margin:12px 0 4px"><span class="pill bad" id="pPill"></span></p><p id="pTip" style="font-weight:700;margin:6px 0 14px"></p><div class="chips"><div class="chip"><span class="small">Homes by 8:30</span><b id="cOn"></b></div><div class="chip"><span class="small">Milk to buy</span><b id="cMilk"></b></div><div class="chip"><span class="small">Margin at Rs 5 a litre</span><b id="cMar"></b></div><div class="chip"><span class="small">Sour milk risk</span><b id="cSp"></b></div></div></section><section class="card s7" aria-labelledby="h-tt"><h2 id="h-tt">Tomorrow's timetable</h2><div id="tt"></div></section><section class="card s5" aria-labelledby="h-ck"><h2 id="h-ck">Night-before checklist</h2><div class="ck" id="ck"></div><div class="bar"><i id="ckBar" style="width:0;background:var(--green)"></i></div><p class="small" id="ckTxt" style="margin:0"></p></section><section class="card s12" aria-labelledby="h-wi"><h2 id="h-wi">What if the dairy queue changes?</h2><p class="sub">Same plan, different waits.</p><div class="chips" id="wi"></div></section></div><p class="small" style="margin:16px 0 0">All numbers are sample figures built from the case study. They will be replaced with Gokul's own records.</p></div></div></div>
 <script src="script.js"></script>
 </body>
 </html>
